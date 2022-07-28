@@ -25,11 +25,11 @@ Once you are finished creating your image classifier, make sure to commit your c
 
 **Image Classifier**
 
-
+You will write an algorithm to classify whether images contain either a dog or a cat.  This is easy for humans, dogs, and cats. Your computer will find it a bit more difficult.
 
 Dataset links:
 
-
+https://www.kaggle.com/c/dogs-vs-cats/data
 
 **Step 1:**
 
