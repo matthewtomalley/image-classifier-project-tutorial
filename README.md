@@ -63,11 +63,17 @@ We can write custom code to load the images into memory and resize them as part 
 2. If you do not have more than 12 gigabytes of RAM, load the images progressively using the Keras ImageDataGenerator class and flow_from_directory() API. This will be slower to execute but will run on more machines. This API prefers data to be divided into separate train/ and test/ directories, and under each directory to have a subdirectory for each class. Images are then organized under the subdirectories. The directory structure should be as follows:
 
 -dataset_dogs_vs_cats
+
     -test
+    
         -cats
+        
         -dogs
+        
     -train
+    
         -cats
+        
         -dogs
 
 
