@@ -40,7 +40,7 @@ Download the datatset folder and unzip files. You will now have a folder called 
 
 **Step 2:**
 
-In your notebook import the following libraries:
+Import the following libraries:
 
 ```py
 import keras,os
@@ -123,7 +123,7 @@ model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
 model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
 ```
 
-**Step 7:**
+**Step 6:**
 
 After creating all the convolution, pass the data to the dense layer. In order to do that, you should first flatten the vector which comes out of the convolutions and then add:
 
@@ -135,27 +135,27 @@ After creating all the convolution, pass the data to the dense layer. In order t
 
 Use RELU activation for both of the dense layers in order to stop forwarding negative values through the network. Use a 2 unit dense layer in the end with softmax activation as you have 2 classes to predict. The softmax layer will output the value between 0 and 1 based on the confidence of the model that which class the images belongs to.
 
-**Step 8:**
+**Step 7:**
 
 Import Adam optimizer and use it to compile the model. Specify a learning rate for it.
 
-**Step 9:**
+**Step 8:**
 
 Check the summary of the model
 
-**Step 10:**
+**Step 9:**
 
 Import ModelCheckpoint and EarlyStopping method from keras. Create an object of both and pass that as callback functions to fit_generator.
 
-**Step 11:**
+**Step 10:**
 
 Once you have trained the model, visualise training/validation accuracy and loss. 
 
-**Step 12:**
+**Step 11:**
 
 Load the best saved model and pre-process the image, then pass the image to the model and make predictions.
 
-**Step 13:**
+**Step 12:**
 
 Use you app.py file to create your image classifier. 
 
