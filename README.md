@@ -60,22 +60,7 @@ We can write custom code to load the images into memory and resize them as part 
 
 1. If you have more than 12 gigabytes of RAM use the Keras image processing API to load all 25,000 photos in the training dataset and reshape them to 200×200 square photos. The label should also be determined for each photo based on the filenames. A tuple of photos and labels should be saved.
 
-2. If you do not have more than 12 gigabytes of RAM, load the images progressively using the Keras ImageDataGenerator class and flow_from_directory() API. This will be slower to execute but will run on more machines. This API prefers data to be divided into separate train/ and test/ directories, and under each directory to have a subdirectory for each class. Images are then organized under the subdirectories. The directory structure should be as follows:
-
--dataset_dogs_vs_cats
-
-    -test
-    
-        -cats
-        
-        -dogs
-        
-    -train
-    
-        -cats
-        
-        -dogs
-
+2. If you do not have more than 12 gigabytes of RAM, load the images progressively using the Keras ImageDataGenerator class and flow_from_directory() API. This will be slower to execute but will run on more machines. This API prefers data to be divided into separate train/ and test/ directories, and under each directory to have a subdirectory for each class. 
 
 **Step 4:**
 
