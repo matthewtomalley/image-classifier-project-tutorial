@@ -9,5 +9,6 @@
 	"difficulty": "beginner",
 	"syntax": "python",
 	"duration" : 2,
+    "projectType": "project",
 	"description" : "Use a deep learning algorithm to build an image classifier."
 }
