@@ -49,6 +49,7 @@ from keras.layers import Dense, Conv2D, MaxPool2D , Flatten
 from keras.preprocessing.image import ImageDataGenerator #ya que importa datos con etiquetas fácilmente al modelo. Tiene funciones para cambiar la escala, rotar, hacer zoom, etc. Esta clase altera los datos sobre la marcha mientras los pasa al modelo.
 import numpy as np
 ```
+
 **Paso 3:**
 
 Carga y traza las primeras nueve fotos de perros en una sola figura. Repite lo mismo para los gatos. Puedes ver que las fotos son a color y tienen diferentes formas y tamaños.
