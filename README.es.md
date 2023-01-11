@@ -1,5 +1,5 @@
 <!-- hide -->
-# Image Classifier Project Tutorial
+# Tutorial del proyecto Clasificador de Imágenes
 <!-- endhide -->
 
 - Escribirás un algoritmo para clasificar si las imágenes contienen un perro o un gato. Esto es fácil para humanos, perros y gatos. Tu computadora lo encontrará un poco más difícil.
