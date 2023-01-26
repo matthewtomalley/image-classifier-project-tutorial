@@ -66,7 +66,7 @@ We can write custom code to load the images into memory and resize them as part 
 
 Create an object of ImageDataGenerator for both training and testing data and pass the folder which has train data to the object trdata and similarly pass the folder which has test data to the object tsdata. 
 
-The ImageDataGenerator will automatically label all the data inside cat folder as cat and vis-à-vis for dog folder. In this way data is easily ready to be passed to the neural network.
+The ImageDataGenerator will automatically label all the data inside the cat folder as cat and vis-à-vis for dog folder. This way, data is quickly ready to be passed to the neural network.
 
 **Step 5:**
 

@@ -10,13 +10,13 @@
 
 Esta vez no se hará Fork, tómate un tiempo para leer estas instrucciones:
 
-1. Crear un nuevo repositorio basado en el [proyecto de Machine Learing](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) [haciendo clic aquí](https://github.com/4GeeksAcademy/machine-learning-python-template).
+1. Crea un nuevo repositorio basado en el [proyecto de Machine Learning](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) [haciendo clic aquí](https://github.com/4GeeksAcademy/machine-learning-python-template).
 2. Abre el repositorio creado recientemente en Gitpod usando la [extensión del botón de Gitpod](https://www.gitpod.io/docs/browser-extension/).
 3. Una vez que Gitpod VSCode haya terminado de abrirse, comienza tu proyecto siguiendo las instrucciones a continuación.
 
 ## 🚛 Cómo entregar este proyecto
 
-Una vez que hayas terminado de resolver los ejercicios, asegúrate de confirmar tus cambios, hazle "push" a el fork de tu repositorio y ve a 4Geeks.com para subir el enlace del repositorio.
+Una vez que hayas terminado de resolver los ejercicios, asegúrate de confirmar tus cambios, hazle "push" al fork de tu repositorio y ve a 4Geeks.com para subir el enlace del repositorio.
 
 ## 📝 Instructions
 
@@ -66,9 +66,9 @@ Podemos escribir código personalizado para cargar las imágenes en la memoria y
 
 **Paso 4:**
 
-Create an object of ImageDataGenerator for both training and testing data and pass the folder which has train data to the object trdata and similarly pass the folder which has test data to the object tsdata. 
+Crea un objeto de ImageDataGenerator para datos de entrenamiento y prueba. Luego pasa la carpeta que tiene datos de entrenamiento al objeto trdata y, de manera similar, pasa la carpeta que tiene datos de prueba al objeto tsdata.
 
-The ImageDataGenerator will automatically label all the data inside cat folder as cat and vis-à-vis for dog folder. In this way data is easily ready to be passed to the neural network.
+ImageDataGenerator etiquetará automáticamente todos los datos dentro de la carpeta del gato como gato y en comparación con la carpeta del perro. De esta manera, los datos están listos rápidamente para pasar a la red neuronal.
 
 **Paso 5:**
 
