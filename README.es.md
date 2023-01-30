@@ -18,7 +18,7 @@ Esta vez no se hará Fork, tómate un tiempo para leer estas instrucciones:
 
 Una vez que hayas terminado de resolver los ejercicios, asegúrate de confirmar tus cambios, hazle "push" al fork de tu repositorio y ve a 4Geeks.com para subir el enlace del repositorio.
 
-## 📝 Instructions
+## 📝 Instrucciones
 
 **Clasificador de imágenes**
 
