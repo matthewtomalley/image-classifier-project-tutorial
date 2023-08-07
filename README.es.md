@@ -1,8 +1,10 @@
 <!-- hide -->
-# Tutorial del proyecto Clasificador de Imágenes
+# RNA para clasificación de imágenes - Guía paso a paso
 <!-- endhide -->
 
-- Escribirás un algoritmo para clasificar si las imágenes contienen un perro o un gato. Esto es fácil para humanos, perros y gatos. Tu computadora lo encontrará un poco más difícil.
+- Comprender un dataset nuevo.
+- Modelar los datos utilizando una RNA.
+- Analizar los resultados y optimizar el modelo.
 
 > ¡No te olvides de ser siempre ingenioso!
 
@@ -10,9 +12,9 @@
 
 Esta vez no se hará Fork, tómate un tiempo para leer estas instrucciones:
 
-1. Crea un nuevo repositorio basado en el [proyecto de Machine Learning](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) [haciendo clic aquí](https://github.com/4GeeksAcademy/machine-learning-python-template).
-2. Abre el repositorio creado recientemente en Gitpod usando la [extensión del botón de Gitpod](https://www.gitpod.io/docs/browser-extension/).
-3. Una vez que Gitpod VSCode haya terminado de abrirse, comienza tu proyecto siguiendo las instrucciones a continuación.
+1. Crear un nuevo repositorio basado en el [proyecto de Machine Learing](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) [haciendo clic aquí](https://github.com/4GeeksAcademy/machine-learning-python-template).
+2. Abre el repositorio creado recientemente en Codespace usando la [extensión del botón de Codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository).
+3. Una vez que el VSCode del Codespace haya terminado de abrirse, comienza tu proyecto siguiendo las instrucciones a continuación.
 
 ## 🚛 Cómo entregar este proyecto
 
@@ -20,87 +22,38 @@ Una vez que hayas terminado de resolver los ejercicios, asegúrate de confirmar 
 
 ## 📝 Instrucciones
 
-**Clasificador de imágenes**
+### Sistema de clasificación de imágenes
 
-El conjunto de datos se compone de fotos de perros y gatos proporcionadas como un subconjunto de fotos de un conjunto de datos mucho más grande de 3 millones de fotos anotadas manualmente. El conjunto de datos se desarrolló como una asociación entre Petfinder.com y Microsoft.
+El conjunto de datos se compone de fotos de perros y gatos proporcionadas como un subconjunto de fotos de uno mucho más grande de 3 millones de fotos anotadas manualmente. Estos datos se obtuvieron a través de una colaboración entre Petfinder.com y Microsoft.
 
 El conjunto de datos se usó originalmente como un CAPTCHA, es decir, una tarea que se cree que un humano encuentra trivial, pero que una máquina no puede resolver, que se usa en sitios web para distinguir entre usuarios humanos y bots. La tarea se denominó "Asirra". Cuando se presentó "Asirra", se mencionó "que los estudios de usuarios indican que los humanos pueden resolverlo el 99,6% de las veces en menos de 30 segundos". A menos que se produzca un gran avance en la visión artificial, esperamos que los ordenadores no tengan más de 1/54.000 posibilidades de resolverlo.
 
-En el momento en que se publicó la competencia, el resultado de última generación se logró con un SVM y se describió en un artículo de 2007 con el título "Ataques de Machine Learning contra el CAPTCHA de Asirra" (PDF) que logró una precisión de clasificación del 80 %. Fue este documento el que demostró que la tarea ya no era una tarea adecuada para un CAPTCHA poco después de que se propusiera la tarea.
+En el momento en que se publicó la competencia, el resultado de última generación se logró con un SVM y se describió en un artículo de 2007 con el título "Ataques de Machine Learning contra el CAPTCHA de Asirra" (PDF) que logró una precisión de clasificación del 80%. Fue este documento el que demostró que la tarea ya no era una tarea adecuada para un CAPTCHA poco después de que se propusiera la tarea.
 
-El conjunto de datos es fácil de entender y lo suficientemente pequeño como para caber en la memoria y comenzar con la visión artificial y las redes neuronales convolucionales.
+#### Paso 1: Carga del conjunto de datos
 
-Enlaces de conjuntos de datos:
+El conjunto de datos se encuentra en Kaggle y tendrás que acceder a ella para descargarlos. La competición la puedes encontrar [aquí](https://www.kaggle.com/c/dogs-vs-cats/data) (o copiando y pegando el siguiente enlace en tu navegador: `https://www.kaggle.com/c/dogs-vs-cats/data`)
 
-https://www.kaggle.com/c/dogs-vs-cats/data
+Descarga la carpeta datatset y descomprime los archivos. Ahora tendrás una carpeta llamada `tren` que contiene 25.000 archivos de imagen (formato .jpg) de perros y gatos. Las fotos están etiquetadas por su nombre de archivo, con la palabra `perro` o `gato`.
 
-**Paso 1:**
+#### Paso 2: Visualiza la información de entrada
 
-Descarga la carpeta datatset y descomprime los archivos. Ahora tendrás una carpeta llamada 'tren/' que contiene 25 000 archivos .jpg de perros y gatos. Las fotos están etiquetadas por su nombre de archivo, con la palabra “perro” o “gato”.
+El primer paso cuando nos enfrentamos a un problema de clasificación de imágenes es obtener toda la información posible a través de ellas. Por lo tanto, carga e imprime las primeras nueve fotos de perros en una sola figura. Repite lo mismo para los gatos. Puedes ver que las fotos son a color y tienen diferentes formas y tamaños.
 
-**Paso 2:**
+Esta variedad de tamaños y formatos debe solucionarse antes de entrar el modelo. Asegúrate de que todas tengan un tamaño fijo de 200x200 píxeles.
 
-Importa las siguientes bibliotecas:
+Como podrás ver, son una gran cantidad de imágenes, asegúrate de seguir las siguientes normas:
 
-```py
-import keras,os
-from keras.models import Sequential  #ya que todas las capas del modelo se organizarán en secuencia
-from keras.layers import Dense, Conv2D, MaxPool2D , Flatten
-from keras.preprocessing.image import ImageDataGenerator #ya que importa datos con etiquetas fácilmente al modelo. Tiene funciones para cambiar la escala, rotar, hacer zoom, etc. Esta clase altera los datos sobre la marcha mientras los pasa al modelo.
-import numpy as np
-```
+1. **Si tienes más de 12 gigabytes de RAM**, usa la API de procesamiento de imágenes de Keras para cargar las 25.000 fotos en el conjunto de datos de entrenamiento y remodelarlas a fotos cuadradas de 200×200 píxeles. La etiqueta también debe determinarse para cada foto en función de los nombres de archivo. Se debe guardar una tupla de fotos y etiquetas.
+2. **Si no tienes más de 12 gigabytes de RAM**, carga las imágenes progresivamente usando la clase Keras `ImageDataGenerator` y la función `flow_from_directory()`. Esto será más lento de ejecutar pero se ejecutará en hardware de peor capacidad. Esta función prefiere que los datos se dividan en directorios train/ y test/ separados, y debajo de cada directorio para tener un subdirectorio para cada clase.
 
-**Paso 3:**
+Una vez tengas todas las imágenes procesadas, crea un objeto `ImageDataGenerator` para datos de entrenamiento y prueba. Luego pasa la carpeta que tiene datos de entrenamiento al objeto `trdata` y, de manera similar, pasa la carpeta que tiene datos de prueba al objeto `tsdata`. De esta forma, se etiquetarán las imágenes automáticamente y estará todo listo para entrar a la red.
 
-Carga y traza las primeras nueve fotos de perros en una sola figura. Repite lo mismo para los gatos. Puedes ver que las fotos son a color y tienen diferentes formas y tamaños.
+#### Paso 3: Construye una RNA
 
-Las fotos deberán remodelarse antes del modelado para que todas las imágenes tengan la misma forma. Esto es a menudo una pequeña imagen cuadrada. Las entradas más pequeñas significan un modelo que es más rápido de entrenar, por lo que elegiremos un tamaño fijo de 200 × 200 píxeles.
+Cualquier clasificador que se ajuste a este problema tendrá que ser robusto porque algunas imágenes muestran al gato o al perro en una esquina o tal vez a 2 gatos o perros en la misma foto. Si has podido investigar algunas de las implementaciones de los ganadores de otras competiciones también relacionadas con imágenes, verás que `VGG16` es una arquitectura de CNN utilizada para ganar la competencia de Kaggle ILSVR (Imagenet) en 2014. Se considera una de las arquitecturas de modelos de visión con mejores resultados hasta la fecha.
 
-Podríamos cargar todas las imágenes, remodelarlas y almacenarlas como un solo array NumPy. Esto podría caber en la memoria RAM en muchas máquinas modernas, pero no en todas, especialmente si solo tienes 8 gigabytes para trabajar.
-
-Podemos escribir código personalizado para cargar las imágenes en la memoria y cambiarles el tamaño como parte del proceso de carga, luego guardarlas listas para el modelado.
-
-1. Si tienes más de 12 gigabytes de RAM, use la API de procesamiento de imágenes de Keras para cargar las 25 000 fotos en el conjunto de datos de entrenamiento y remodelarlas a fotos cuadradas de 200 × 200. La etiqueta también debe determinarse para cada foto en función de los nombres de archivo. Se debe guardar una tupla de fotos y etiquetas.
-
-2. Si no tienes más de 12 gigabytes de RAM, carga las imágenes progresivamente usando la clase Keras ImageDataGenerator y la API flow_from_directory(). Esto será más lento de ejecutar pero se ejecutará en más máquinas. Esta API prefiere que los datos se dividan en directorios train/ y test/ separados, y debajo de cada directorio para tener un subdirectorio para cada clase.
-
-**Paso 4:**
-
-Crea un objeto de ImageDataGenerator para datos de entrenamiento y prueba. Luego pasa la carpeta que tiene datos de entrenamiento al objeto trdata y, de manera similar, pasa la carpeta que tiene datos de prueba al objeto tsdata.
-
-ImageDataGenerator etiquetará automáticamente todos los datos dentro de la carpeta del gato como gato y en comparación con la carpeta del perro. De esta manera, los datos están listos rápidamente para pasar a la red neuronal.
-
-**Paso 5:**
-
-Cualquier clasificador que se ajuste a este problema tendrá que ser robusto porque algunas imágenes muestran al gato o al perro en una esquina o tal vez a 2 gatos o perros en la misma foto. VGG16 es una arquitectura de red neuronal de convolución (CNN) utilizada para ganar la competencia ILSVR (Imagenet) en 2014. Se considera una de las arquitecturas de modelos de visión excelentes hasta la fecha.
-
-Lo más singular de VGG16 es que, en lugar de tener una gran cantidad de hiperparámetros, se enfocaron en tener capas de convolución de filtro 3x3 con un paso 1 y siempre usaron el mismo relleno y la misma capa maxpool de filtro 2x2 de paso 2. Sigue esto disposición de las capas de convolución y maxpool consistentemente a lo largo de toda la arquitectura. Al final, tiene 2 FC (capas totalmente conectadas) seguidas de un softmax para la salida. El 16 en VGG16 se refiere a que tiene 16 capas que tienen pesos. Esta red es bastante grande y tiene alrededor de 138 millones (aprox.) de parámetros.
-
-Inicializa el modelo especificando que el modelo es un modelo secuencial. Después de inicializar el modelo, agrega:
-
-→ 2 x capa de convolución de 64 canales de 3x3 kernel y mismo relleno.
-
-→ 1 x capa maxpool de tamaño piscina 2x2 y zancada 2x2.
-
-→ 2 x capa de convolución de 128 canales de 3x3 kernel y mismo relleno.
-
-→ 1 x capa maxpool de tamaño piscina 2x2 y zancada 2x2.
-
-→ 3 x capa de convolución de 256 canales de 3x3 kernel y mismo relleno.
-
-→ 1 x capa maxpool de tamaño piscina 2x2 y zancada 2x2.
-
-→ 3 x capa de convolución de 512 canales de 3x3 kernel y mismo relleno.
-
-→ 1 x capa maxpool de tamaño piscina 2x2 y zancada 2x2.
-
-→ 3 x capa de convolución de 512 canales de 3x3 kernel y mismo relleno.
-
-→ 1 x capa maxpool de tamaño piscina 2x2 y zancada 2x2.
-
-Agrega la activación de relu (Unidad lineal rectificada) a cada capa para que todos los valores negativos no pasen a la siguiente capa.
-
-Veamos unas primeras filas para tener una idea, y seguir con todas las capas:
+Utiliza la siguiente arquitectura de prueba:
 
 ```py
 model = Sequential()
@@ -108,46 +61,38 @@ model.add(Conv2D(input_shape=(224,224,3),filters=64,kernel_size=(3,3),padding="s
 model.add(Conv2D(filters=64,kernel_size=(3,3),padding="same", activation="relu"))
 model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
 model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+model.add(Flatten())
+model.add(Dense(units=4096,activation="relu"))
+model.add(Dense(units=4096,activation="relu"))
+model.add(Dense(units=2, activation="softmax"))
 ```
 
-**Paso 6:**
+El código anterior aplica convoluciones a los datos (capas `Conv2D` y `MaxPool2D`) y después aplica capas densas (capas `Dense`) para el procesamiento de los valores numéricos obtenidos tras las convoluciones.
 
-Después de crear toda la convolución, pasa los datos a la capa densa. Para hacer eso, primero debes aplanar el vector que sale de las circunvoluciones y luego agregar:
+A continuación añade los elementos restantes para conformar el modelo, entrénalo y mide su rendimiento.
 
-→ 1 x Capa densa de 4096 unidades
+#### Paso 4: Optimiza el modelo anterior
 
-→ 1 x Capa densa de 4096 unidades
+Importa el método `ModelCheckpoint` y `EarlyStopping` de Keras. Crea un objeto de ambos y páselo como funciones de devolución de llamada a `fit_generator`.
 
-→ 1 x Capa Dense Softmax de 2 unidades
+Carga el mejor modelo de los anteriores y utiliza el conjunto de test para hacer predicciones.
 
-Usa la activación RELU para ambas capas densas para dejar de reenviar valores negativos a través de la red. Use una capa densa de 2 unidades al final con activación softmax ya que tiene 2 clases para predecir. La capa softmax generará el valor entre 0 y 1 en función de la confianza del modelo en la clase a la que pertenecen las imágenes.
+#### Paso 5: Guarda el modelo
 
-**Paso 7:**
+Almacena el modelo en la carpeta correspondiente.
 
-Importa el optimizador de Adam y utilízalo para compilar el modelo. Especifica una tasa de aprendizaje para ello.
-
-**Paso 8:**
-
-Consulta el resumen del modelo
-
-**Paso 9:**
-
-Importa el método ModelCheckpoint y EarlyStopping de keras. Crea un objeto de ambos y páselo como funciones de devolución de llamada a fit_generator.
-
-**Paso 10:**
-
-Una vez que hayas entrenado el modelo, visualiza la precisión y la pérdida del entrenamiento/validación.
-
-**Paso 11:**
-
-Carga el mejor modelo guardado y preprocesa la imagen, luego pasa la imagen al modelo y haz predicciones.
-
-**Paso 12:**
-
-Usa tu archivo app.py para crear su clasificador de imágenes.
-
-En tu archivo README escribe un breve resumen.
-
-Guía de soluciones: 
-
-https://github.com/4GeeksAcademy/image-classifier-project-tutorial/blob/main/solution_guide.ipynb
+> NOTA: Solución: https://github.com/4GeeksAcademy/image-classifier-project-tutorial/blob/main/solution_guide.ipynb
