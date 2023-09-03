@@ -6,11 +6,9 @@
 - Model the data using an ANN.
 - Analyze the results and optimize the model.
 
-> ¡No te olvides de ser siempre ingenioso!
-
 ## 🌱  How to start this project
 
-You will not be forking this time, please take some time to read these instructions:
+Follow the instructions below:
 
 1. Create a new repository based on [machine learning project](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) by [clicking here](https://github.com/4GeeksAcademy/machine-learning-python-template).
 2. Open the newly created repository in Codespace using the [Codespace button extension](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository).
@@ -18,7 +16,7 @@ You will not be forking this time, please take some time to read these instructi
 
 ## 🚛 How to deliver this project
 
-Once you are finished creating your linear regression model, make sure to commit your changes, push to your repository and go to 4Geeks.com to upload the repository link.
+Once you have finished solving the exercises, be sure to commit your changes, push to your repository and go to 4Geeks.com to upload the repository link.
 
 ## 📝 Instructions
 
@@ -57,28 +55,28 @@ It uses the following test architecture:
 
 ```py
 model = Sequential()
-model.add(Conv2D(input_shape=(224,224,3),filters=64,kernel_size=(3,3),padding="same", activation="relu"))
-model.add(Conv2D(filters=64,kernel_size=(3,3),padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+model.add(Conv2D(input_shape = (224,224,3), filters = 64, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 64,kernel_size = (3,3),padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 128, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 128, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
 model.add(Flatten())
-model.add(Dense(units=4096,activation="relu"))
-model.add(Dense(units=4096,activation="relu"))
-model.add(Dense(units=2, activation="softmax"))
+model.add(Dense(units = 4096,activation = "relu"))
+model.add(Dense(units = 4096,activation = "relu"))
+model.add(Dense(units = 2, activation = "softmax"))
 ```
 
 The above code applies convolutions to the data (`Conv2D` and `MaxPool2D` layers) and then applies dense layers (`Dense` layers) for processing the numerical values obtained after the convolutions.
@@ -95,4 +93,4 @@ Load the best model from the above and use the test set to make predictions.
 
 Store the model in the corresponding folder.
 
-> NOTE: Solution: https://github.com/4GeeksAcademy/image-classifier-project-tutorial/blob/main/solution_guide.ipynb
+> NOTE: Solution: https://github.com/4GeeksAcademy/image-classifier-project-tutorial/blob/main/solution.ipynb
