@@ -6,19 +6,17 @@
 - Modelar los datos utilizando una RNA.
 - Analizar los resultados y optimizar el modelo.
 
-> ¡No te olvides de ser siempre ingenioso!
-
 ## 🌱  Cómo iniciar este proyecto
 
-Esta vez no se hará Fork, tómate un tiempo para leer estas instrucciones:
+Sigue las siguientes instrucciones:
 
-1. Crear un nuevo repositorio basado en el [proyecto de Machine Learing](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) [haciendo clic aquí](https://github.com/4GeeksAcademy/machine-learning-python-template).
+1. Crea un nuevo repositorio basado en el [proyecto de Machine Learing](https://github.com/4GeeksAcademy/machine-learning-python-template/generate) [haciendo clic aquí](https://github.com/4GeeksAcademy/machine-learning-python-template).
 2. Abre el repositorio creado recientemente en Codespace usando la [extensión del botón de Codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository).
 3. Una vez que el VSCode del Codespace haya terminado de abrirse, comienza tu proyecto siguiendo las instrucciones a continuación.
 
 ## 🚛 Cómo entregar este proyecto
 
-Una vez que hayas terminado de resolver los ejercicios, asegúrate de confirmar tus cambios, hazle "push" al fork de tu repositorio y ve a 4Geeks.com para subir el enlace del repositorio.
+Una vez que hayas terminado de resolver el caso práctico, asegúrate de confirmar tus cambios, haz push a tu repositorio y ve a 4Geeks.com para subir el enlace del repositorio.
 
 ## 📝 Instrucciones
 
@@ -57,28 +55,28 @@ Utiliza la siguiente arquitectura de prueba:
 
 ```py
 model = Sequential()
-model.add(Conv2D(input_shape=(224,224,3),filters=64,kernel_size=(3,3),padding="same", activation="relu"))
-model.add(Conv2D(filters=64,kernel_size=(3,3),padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=128, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+model.add(Conv2D(input_shape = (224,224,3), filters = 64, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 64,kernel_size = (3,3),padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 128, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 128, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(Conv2D(filters = 512, kernel_size = (3,3), padding = "same", activation = "relu"))
+model.add(MaxPool2D(pool_size = (2,2),strides = (2,2)))
 model.add(Flatten())
-model.add(Dense(units=4096,activation="relu"))
-model.add(Dense(units=4096,activation="relu"))
-model.add(Dense(units=2, activation="softmax"))
+model.add(Dense(units = 4096,activation = "relu"))
+model.add(Dense(units = 4096,activation = "relu"))
+model.add(Dense(units = 2, activation = "softmax"))
 ```
 
 El código anterior aplica convoluciones a los datos (capas `Conv2D` y `MaxPool2D`) y después aplica capas densas (capas `Dense`) para el procesamiento de los valores numéricos obtenidos tras las convoluciones.
@@ -95,4 +93,4 @@ Carga el mejor modelo de los anteriores y utiliza el conjunto de test para hacer
 
 Almacena el modelo en la carpeta correspondiente.
 
-> NOTA: Solución: https://github.com/4GeeksAcademy/image-classifier-project-tutorial/blob/main/solution_guide.ipynb
+> NOTA: Solución: https://github.com/4GeeksAcademy/image-classifier-project-tutorial/blob/main/solution.ipynb
