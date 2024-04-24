@@ -38,7 +38,7 @@ Download the dataset folder and unzip the files. You will now have a folder call
 
 The first step when faced with a picture classification problem is to get as much information as possible through the pictures. Therefore, load and print the first nine pictures of dogs in a single figure. Repeat the same for cats. You can see that the pictures are in color and have different shapes and sizes.
 
-This variety of sizes and formats must be sorted out before entering the model. Make sure they all have a fixed size of 200x200 pixels.
+This variety of sizes and formats must be sorted out before training the model. Make sure they all have a fixed size of 200x200 pixels.
 
 As you can see, there are a lot of images. Make sure you stick to the following rules:
 
