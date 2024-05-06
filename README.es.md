@@ -32,7 +32,7 @@ En el momento en que se publicó la competencia, el resultado de última generac
 
 El conjunto de datos se encuentra en Kaggle y tendrás que acceder a ella para descargarlos. La competición la puedes encontrar [aquí](https://www.kaggle.com/c/dogs-vs-cats/data) (o copiando y pegando el siguiente enlace en tu navegador: `https://www.kaggle.com/c/dogs-vs-cats/data`)
 
-Descarga la carpeta datatset y descomprime los archivos. Ahora tendrás una carpeta llamada `tren` que contiene 25.000 archivos de imagen (formato .jpg) de perros y gatos. Las fotos están etiquetadas por su nombre de archivo, con la palabra `perro` o `gato`.
+Descarga la carpeta datatset y descomprime los archivos. Ahora tendrás una carpeta llamada `train` que contiene 25.000 archivos de imagen (formato .jpg) de perros y gatos. Las fotos están etiquetadas por su nombre de archivo, con la palabra `perro` o `gato`.
 
 #### Paso 2: Visualiza la información de entrada
 
