@@ -73,6 +73,6 @@ kaggle.json
 # VS Code settings
 .vscode/
 
-data
+data/
 opt_model.keras
 dog_cat_2xConv2d_1xMaxPool_1xDense128.keras
